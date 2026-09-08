@@ -1,32 +1,36 @@
-# AI Career Counsellor - Persona-Based Web Application
+# Multi-Persona AI Career Counsellor Web Application
 
-## Problem Statement & Objective
-Students often get one-dimensional career advice. This project provides multi-perspective guidance using an AI Career Counsellor web app powered by the Google Gemini API (`gemini-2.5-flash`). Users can query single or multiple advisor personas simultaneously to receive customized, domain-specific insights.
+An interactive, single-page web application that leverages the Google Gemini API (`gemini-3.6-flash`) to deliver structured, multi-perspective career guidance. The system allows users to query single or multiple career advisor personas simultaneously, returning tailored domain-specific advice alongside an automated comparative analysis matrix.
 
-## Features
-- **4 Custom Personas:** Technical, HR & Placement, Academic, and Entrepreneurship Counsellors.
-- **Single Request Batching:** Sends all selected persona instructions in a single structured Gemini API request using JSON schema outputs.
-- **Prompt Card Architecture:** Built using standard 6-element Prompt Cards (Role, Audience, Context, Format, Constraints, Language).
-- **Comparative Analysis Matrix:** Dynamically generates a summary comparison table when multiple personas are queried.
-- **Zero API Key Exposure:** API Key is entered via a client UI input field and never hardcoded or committed to git.
+---
 
-## Prompt Card Architecture (Example)
-| Element | Description |
-| :--- | :--- |
-| **Role** | Senior Technical Career Counsellor |
-| **Audience** | ICT / Computer Science Undergraduate Students |
-| **Context** | Evaluating technical tools, skills, projects, and career choices |
-| **Format** | Bulleted Technical Focus, Required Projects, Immediate Action |
-| **Constraints** | Realistic advice, no job guarantees, return "I don't know" if out-of-scope |
-| **Language** | Clear, simple English |
+## Technical Architecture & Design Principles
 
-## How to Run
-1. Clone the repository.
-2. Open `index.html` directly in any modern Web Browser (Chrome, Edge, Firefox).
-3. Enter your Google Gemini API key into the input field.
-4. Select one or more personas, type a career question, and click **Get Career Advice**.
+The application relies on key frontend and prompt design concepts:
 
-## Sample Test Questions
-1. *Should I prepare for campus placements or pursue higher studies?*
-2. *I know Python and basic Machine Learning. What projects should I build to stand out?*
-3. *Should I become an AI Engineer, Data Scientist, or Software Developer?*
+* **Single Request Batching:** Sends all selected persona definitions in a single structured Gemini API request to minimize network latency and prevent rate-limit exhaustion.
+* **Structured Output Schema:** Utilizes the `@google/genai` Web SDK with JSON Schema enforcement (`responseMimeType: "application/json"`) to guarantee consistent output parsing.
+* **Six-Element Prompt Engineering Framework:** Each persona prompt is constructed strictly using the 6 Prompt Card elements: *Role*, *Audience*, *Context*, *Format*, *Constraints*, and *Language*.
+* **Zero External Dependencies / Single-File Build:** HTML, CSS, and modular ES JavaScript are contained inside `index.html` without external bundling tools.
+* **Out-of-Scope Rule Enforcement:** Personas enforce guardrails using strict fallback logic ("I don't know") for non-career or non-technical queries.
+
+---
+
+## Defined Advisor Personas
+
+The system provides 4 specialized advisor personas, each engineered via distinct Prompt Cards:
+
+1. **Technical Career Counsellor:** Focuses on programming stacks, AI/ML tools, software architecture, DSA, and project portfolios.
+2. **HR & Placement Counsellor:** Focuses on resume optimization, corporate hiring expectations, soft skills, and behavioral interview readiness.
+3. **Academic & Research Counsellor:** Focuses on post-graduate studies (MS/M.Tech/PhD), academic research methodologies, and competitive examinations (GRE/GATE).
+4. **Entrepreneurship Counsellor:** Focuses on product validation, startup incubation, commercialization, MVPs, and freelancing.
+
+---
+
+## Repository Structure
+
+```text
+.
+├── index.html          # Main single-file source code (HTML, CSS, JS)
+├── prompt_card.html    # Printable single-page Prompt Card specification sheet
+└── README.md           # Technical documentation and execution guide
