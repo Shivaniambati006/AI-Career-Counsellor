@@ -1,4 +1,4 @@
-# Multi-Persona AI Career Counsellor Web Application
+# AI Career Counsellor Web Application
 
 An interactive, single-page web application that leverages the Google Gemini API (`gemini-3.6-flash`) to deliver structured, multi-perspective career guidance. The system allows users to query single or multiple career advisor personas simultaneously, returning tailored domain-specific advice alongside an automated comparative analysis matrix.
 
