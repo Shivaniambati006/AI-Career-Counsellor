@@ -2,7 +2,7 @@
 
 An interactive, single-page web application that leverages the Google Gemini API (`gemini-3.6-flash`) to deliver structured, multi-perspective career guidance. The system allows users to query single or multiple career advisor personas simultaneously, returning tailored domain-specific advice alongside an automated comparative analysis matrix.
 
----
+
 
 ## Technical Architecture & Design Principles
 
@@ -14,7 +14,7 @@ The application relies on key frontend and prompt design concepts:
 * **Zero External Dependencies / Single-File Build:** HTML, CSS, and modular ES JavaScript are contained inside `index.html` without external bundling tools.
 * **Out-of-Scope Rule Enforcement:** Personas enforce guardrails using strict fallback logic ("I don't know") for non-career or non-technical queries.
 
----
+
 
 ## Defined Advisor Personas
 
@@ -25,7 +25,7 @@ The system provides 4 specialized advisor personas, each engineered via distinct
 3. **Academic & Research Counsellor:** Focuses on post-graduate studies (MS/M.Tech/PhD), academic research methodologies, and competitive examinations (GRE/GATE).
 4. **Entrepreneurship Counsellor:** Focuses on product validation, startup incubation, commercialization, MVPs, and freelancing.
 
----
+
 
 ## Repository Structure
 
